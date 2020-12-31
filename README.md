@@ -1,3 +1,3 @@
-## LM-BFF (Better Few-Shot Fine-tuning of Language Models)
+## LM-BFF (Better Few-shot Fine-tuning of Language Models)
 
-Stay tuned.
+Coming soon.
