@@ -532,7 +532,7 @@ class TextClassificationProcessor(DataProcessor):
         return examples
         
 def text_classification_metrics(task_name, preds, labels):
-    return (preds == labels).mean()
+    return {"acc": (preds == labels).mean()}
 
 # Add your task to the following mappings
 
