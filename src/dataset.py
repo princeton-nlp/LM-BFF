@@ -262,7 +262,7 @@ class FewShotDataset(torch.utils.data.Dataset):
     def __init__(self, args, tokenizer, cache_dir=None, mode="train", use_demo=False):
         self.args = args
         self.task_name = args.task_name
-        self.processor = processors_mapping[args.task_name]()
+        self.processor = processors_mapping[args.task_name]
         self.tokenizer = tokenizer
         self.mode = mode
 

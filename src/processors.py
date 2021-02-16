@@ -537,23 +537,23 @@ def text_classification_metrics(task_name, preds, labels):
 # Add your task to the following mappings
 
 processors_mapping = {
-    "cola": ColaProcessor,
-    "mnli": MnliProcessor,
-    "mnli-mm": MnliMismatchedProcessor,
-    "mrpc": MrpcProcessor,
-    "sst-2": Sst2Processor,
-    "sts-b": StsbProcessor,
-    "qqp": QqpProcessor,
-    "qnli": QnliProcessor,
-    "rte": RteProcessor,
-    "wnli": WnliProcessor,
-    "snli": SnliProcessor,
-    "mr": TextClassificationProcessor,
-    "sst-5": TextClassificationProcessor,
-    "subj": TextClassificationProcessor,
-    "trec": TextClassificationProcessor,
-    "cr": TextClassificationProcessor,
-    "mpqa": TextClassificationProcessor
+    "cola": ColaProcessor(),
+    "mnli": MnliProcessor(),
+    "mnli-mm": MnliMismatchedProcessor(),
+    "mrpc": MrpcProcessor(),
+    "sst-2": Sst2Processor(),
+    "sts-b": StsbProcessor(),
+    "qqp": QqpProcessor(),
+    "qnli": QnliProcessor(),
+    "rte": RteProcessor(),
+    "wnli": WnliProcessor(),
+    "snli": SnliProcessor(),
+    "mr": TextClassificationProcessor("mr"),
+    "sst-5": TextClassificationProcessor("sst-5"),
+    "subj": TextClassificationProcessor("subj"),
+    "trec": TextClassificationProcessor("trec"),
+    "cr": TextClassificationProcessor("cr"),
+    "mpqa": TextClassificationProcessor("mpqa")
 }
 
 num_labels_mapping = {
