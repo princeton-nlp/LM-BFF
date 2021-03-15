@@ -64,7 +64,7 @@ class BertForPromptFinetuning(BertPreTrainedModel):
             mask_pos = mask_pos.squeeze()
 
         # Encode everything
-        outputs = self.roberta(
+        outputs = self.bert(
             input_ids,
             attention_mask=attention_mask,
             token_type_ids=token_type_ids

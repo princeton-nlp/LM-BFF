@@ -56,6 +56,12 @@ class ModelArguments:
         metadata={"help": "Few-shot learning model type. Choice: finetune, prompt, prompt-demo"}
     )
 
+    # Only for BERT-type model
+    random_segment: bool = field(
+        default=False,
+        metadata={"help": "Whether to reinitialize the token type embeddings (only for BERT)."}
+    )
+
 @dataclass
 class DynamicDataTrainingArguments(DataTrainingArguments):
     """
