@@ -132,6 +132,7 @@ python run.py \
   --tag $TAG \
   --template $TEMPLATE \
   --mapping $MAPPING \
+  $TASK_EXTRA \
   $1 
 
 # Delete the checkpoint 
