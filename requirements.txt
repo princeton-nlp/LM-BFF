@@ -13,7 +13,6 @@ nltk==3.5
 numpy==1.19.4
 packaging==20.8
 pandas==1.1.5
-pkg-resources==0.0.0
 protobuf==3.14.0
 pycodestyle==2.6.0
 pyflakes==2.2.0
