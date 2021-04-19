@@ -66,17 +66,17 @@ case $TASK in
     mr)
         TEMPLATE=*cls**sent_0*_It_was*mask*.*sep+*
         MAPPING="{0:'terrible',1:'great'}"
-        TASK_EXTRA="--first_sent_limit 110 --second_sent_limit 50 --double_demo"
+        TASK_EXTRA="--first_sent_limit 110 --other_sent_limit 50 --double_demo"
         ;;
     sst-5)
         TEMPLATE=*cls**sent_0*_It_was*mask*.*sep+*
         MAPPING="{0:'terrible',1:'bad',2:'okay',3:'good',4:'great'}"
-        TASK_EXTRA="--first_sent_limit 110 --second_sent_limit 20 --double_demo"
+        TASK_EXTRA="--first_sent_limit 110 --other_sent_limit 20 --double_demo"
         ;;
     subj)
         TEMPLATE=*cls**sent_0*_This_is*mask*.*sep+*
         MAPPING="{0:'subjective',1:'objective'}"
-        TASK_EXTRA="--first_sent_limit 110 --second_sent_limit 50 --double_demo"
+        TASK_EXTRA="--first_sent_limit 110 --other_sent_limit 50 --double_demo"
         ;;
     trec)
         TEMPLATE="*cls**mask*:*+sent_0**sep+*"
@@ -86,7 +86,7 @@ case $TASK in
     cr)
         TEMPLATE=*cls**sent_0*_It_was*mask*.*sep+*
         MAPPING="{0:'terrible',1:'great'}"
-        TASK_EXTRA="--first_sent_limit 110 --second_sent_limit 50 --double_demo"
+        TASK_EXTRA="--first_sent_limit 110 --other_sent_limit 50 --double_demo"
         ;;
     mpqa)
         TEMPLATE=*cls**sent_0*_It_was*mask*.*sep+*
