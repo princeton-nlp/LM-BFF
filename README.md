@@ -395,7 +395,7 @@ If you have any questions related to the code or the paper, feel free to email T
 
 Please cite our paper if you use LM-BFF in your work:
 
-```
+```bibtex
 @inproceedings{gao2021making,
    title={Making Pre-trained Language Models Better Few-shot Learners},
    author={Gao, Tianyu and Fisch, Adam and Chen, Danqi},
