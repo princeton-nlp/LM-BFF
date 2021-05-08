@@ -396,10 +396,10 @@ If you have any questions related to the code or the paper, feel free to email T
 Please cite our paper if you use LM-BFF in your work:
 
 ```
-@article{gao2020making,
-  title={Making Pre-trained Language Models Better Few-shot Learners},
-  author={Gao, Tianyu and Fisch, Adam and Chen, Danqi},
-  journal={arXiv preprint arXiv:2012.15723},
-  year={2020}
+@inproceedings{gao2021making,
+   title={Making Pre-trained Language Models Better Few-shot Learners},
+   author={Gao, Tianyu and Fisch, Adam and Chen, Danqi},
+   booktitle={Association for Computational Linguistics (ACL)},
+   year={2021}
 }
 ```
