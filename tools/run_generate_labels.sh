@@ -78,17 +78,17 @@ for TASK in $TASKS; do
             mr)
                 TEMPLATE=*cls**sent_0*_It_was*mask*.*sep+*
                 MAPPING="{0:'terrible',1:'great'}"
-                TASK_EXTRA="--first_sent_limit 110 --second_sent_limit 50"
+                TASK_EXTRA="--first_sent_limit 110 --other_sent_limit 50"
                 ;;
             sst-5)
                 TEMPLATE=*cls**sent_0*_It_was*mask*.*sep+*
                 MAPPING="{0:'terrible',1:'bad',2:'okay',3:'good',4:'great'}"
-                TASK_EXTRA="--first_sent_limit 110 --second_sent_limit 20"
+                TASK_EXTRA="--first_sent_limit 110 --other_sent_limit 20"
                 ;;
             subj)
                 TEMPLATE=*cls**sent_0*_This_is*mask*.*sep+*
                 MAPPING="{0:'subjective',1:'objective'}"
-                TASK_EXTRA="--first_sent_limit 110 --second_sent_limit 50"
+                TASK_EXTRA="--first_sent_limit 110 --other_sent_limit 50"
                 ;;
             trec)
                 TEMPLATE="*cls**mask*:*+sent_0**sep+*"
@@ -100,7 +100,7 @@ for TASK in $TASKS; do
             cr)
                 TEMPLATE=*cls**sent_0*_It_was*mask*.*sep+*
                 MAPPING="{0:'terrible',1:'great'}"
-                TASK_EXTRA="--first_sent_limit 110 --second_sent_limit 50"
+                TASK_EXTRA="--first_sent_limit 110 --other_sent_limit 50"
                 ;;
             mpqa)
                 TEMPLATE=*cls**sent_0*_It_was*mask*.*sep+*

@@ -149,3 +149,4 @@ wandb
 ensemble_predict_results
 auto*
 my*
+slurm
