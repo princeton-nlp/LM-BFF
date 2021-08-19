@@ -66,7 +66,7 @@ md5sum -c checksum
 ## Run LM-BFF
 
 ### Quick start
-Our code is built on [transformers](https://github.com/huggingface/transformers). We did all our experiments with version `3.4.0`, but it should work with other versions.
+Our code is built on [transformers](https://github.com/huggingface/transformers) and we use its `3.4.0` version. Other versions of `transformers` might cause unexpected errors.
 
 Before running any experiments, create the result folder by `mkdir result` to save checkpoints. Then you can run our code with the following example:
 
