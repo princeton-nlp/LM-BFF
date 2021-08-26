@@ -150,3 +150,6 @@ ensemble_predict_results
 auto*
 my*
 slurm
+
+# IDE
+.idea/
