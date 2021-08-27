@@ -70,6 +70,10 @@ def main():
             args.key = 'sst-2_dev_eval_acc'
             args.test_key = 'sst-2_test_eval_acc'
             print_name = 'SST-2'
+        elif condition['task_name'] == 'cta':
+            args.key = 'cta_dev_eval_acc'
+            args.test_key = 'cta_test_eval_acc'
+            print_name = 'CTA'
         elif condition['task_name'] == 'snli':
             args.key = 'snli_dev_eval_acc'
             args.test_key = 'snli_test_eval_acc'

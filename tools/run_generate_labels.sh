@@ -107,6 +107,10 @@ for TASK in $TASKS; do
                 MAPPING="{0:'terrible',1:'great'}"
                 TASK_EXTRA="--first_sent_limit 110"
                 ;;
+            CTA)
+                TEMPLATE=*cls**sent_0*_This_is_a*mask*.*sep+*
+                MAPPING="{0:'fact',1:'command'}"
+                ;;
         esac
 
         if [[ $LOAD_TEMPLATES = "true" ]]; then

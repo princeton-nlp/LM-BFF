@@ -35,6 +35,8 @@ def get_sentence(task, line):
             return line[-3] + ' ' + line[-2]
         elif task == 'WNLI':
             return line[1] + ' ' + line[2]
+        elif task == 'CTA':
+            return line[0]
         else:
             raise NotImplementedError
 
@@ -42,7 +44,7 @@ def split_header(task, lines):
     """Returns if the task file has a header or not."""
     if task in ["CoLA"]:
         return [], lines
-    elif task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI"]:
+    elif task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI", "CTA"]:
         return lines[0:1], lines[1:]
     else:
         raise ValueError("Unknown GLUE task.")
@@ -77,7 +79,7 @@ def main():
     parser.add_argument("--k", type=int, help="Number of training instances per label", default=16)
     parser.add_argument("--data_dir", type=str, default="data/k-shot", help="Path to few-shot data")
     parser.add_argument("--seed", type=int, nargs="+", default=[42, 13, 21, 87, 100], help="Seeds for data splits")
-    parser.add_argument("--task", type=str, nargs="+", default=["SST-2", "sst-5", "mr", "cr", "mpqa", "subj", "trec", "CoLA", "MRPC", "QQP", "STS-B", "MNLI", "SNLI", "QNLI", "RTE"], help="Tasks")
+    parser.add_argument("--task", type=str, nargs="+", default=["SST-2", "sst-5", "mr", "cr", "mpqa", "subj", "trec", "CoLA", "MRPC", "QQP", "STS-B", "MNLI", "SNLI", "QNLI", "RTE", "CTA"], help="Tasks")
 
     args = parser.parse_args()
 

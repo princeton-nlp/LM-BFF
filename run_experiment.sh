@@ -1,7 +1,7 @@
 # Required environment variables:
 # TAG: tag for the trail
 # TYPE: finetune / prompt / prompt-demo  
-# TASK: SST-2 / sst-5 / mr / cr / mpqa / subj / trec / CoLA / MNLI / SNLI / QNLI / RTE / MRPC / QQP / STS-B
+# TASK: SST-2 / sst-5 / mr / cr / mpqa / subj / trec / CoLA / MNLI / SNLI / QNLI / RTE / MRPC / QQP / STS-B / CTA
 # BS: batch size (recommendation: 2 / 4 / 8)
 # LR: learning rate (recommendation: 1e-5 / 2e-5 / 5e-5)
 # SEED: random seed (13 / 21 / 42 / 87 / 100)
@@ -92,6 +92,10 @@ case $TASK in
         TEMPLATE=*cls**sent_0*_It_was*mask*.*sep+*
         MAPPING="{0:'terrible',1:'great'}"
         TASK_EXTRA="--first_sent_limit 110  --double_demo"
+        ;;
+    CTA)
+        TEMPLATE=*cls**sent_0*_This_is_a*mask*.*sep+*
+        MAPPING="{0:'fact',1:'command'}"
         ;;
 
 esac

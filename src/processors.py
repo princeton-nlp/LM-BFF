@@ -553,7 +553,8 @@ processors_mapping = {
     "subj": TextClassificationProcessor("subj"),
     "trec": TextClassificationProcessor("trec"),
     "cr": TextClassificationProcessor("cr"),
-    "mpqa": TextClassificationProcessor("mpqa")
+    "mpqa": TextClassificationProcessor("mpqa"),
+    "cta": Sst2Processor()
 }
 
 num_labels_mapping = {
@@ -572,7 +573,8 @@ num_labels_mapping = {
     "subj": 2,
     "trec": 6,
     "cr": 2,
-    "mpqa": 2
+    "mpqa": 2,
+    "cta": 2,
 }
 
 output_modes_mapping = {
@@ -592,7 +594,8 @@ output_modes_mapping = {
     "subj": "classification",
     "trec": "classification",
     "cr": "classification",
-    "mpqa": "classification"
+    "mpqa": "classification",
+    "cta": "classification"
 }
 
 # Return a function that takes (task_name, preds, labels) as inputs
@@ -614,6 +617,7 @@ compute_metrics_mapping = {
     "trec": text_classification_metrics,
     "cr": text_classification_metrics,
     "mpqa": text_classification_metrics,
+    "cta": text_classification_metrics,
 }
 
 # For regression task only: median
