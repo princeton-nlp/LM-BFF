@@ -7,7 +7,7 @@ import pandas as pd
 from pandas import DataFrame
 
 def get_label(task, line):
-    if task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI", "CoLA"]:
+    if task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI", "CoLA", "CTA"]:
         # GLUE style
         line = line.strip().split('\t')
         if task == 'CoLA':
@@ -30,6 +30,8 @@ def get_label(task, line):
             return 0 if float(line[-1]) < 2.5 else 1
         elif task == 'WNLI':
             return line[-1]
+        elif task == 'CTA':
+            return line[-1]
         else:
             raise NotImplementedError
     else:
@@ -38,7 +40,7 @@ def get_label(task, line):
 def load_datasets(data_dir, tasks):
     datasets = {}
     for task in tasks:
-        if task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI", "CoLA"]:
+        if task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI", "CoLA", "CTA"]:
             # GLUE style (tsv)
             dataset = {}
             dirname = os.path.join(data_dir, task)
@@ -69,7 +71,7 @@ def split_header(task, lines):
     """
     if task in ["CoLA"]:
         return [], lines
-    elif task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI"]:
+    elif task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI", "CTA"]:
         return lines[0:1], lines[1:]
     else:
         raise ValueError("Unknown GLUE task.")
@@ -79,7 +81,7 @@ def main():
     parser.add_argument("--k", type=int, default=16,
         help="Training examples for each class.")
     parser.add_argument("--task", type=str, nargs="+", 
-        default=['SST-2', 'sst-5', 'mr', 'cr', 'mpqa', 'subj', 'trec', 'CoLA', 'MRPC', 'QQP', 'STS-B', 'MNLI', 'SNLI', 'QNLI', 'RTE'],
+        default=['SST-2', 'sst-5', 'mr', 'cr', 'mpqa', 'subj', 'trec', 'CoLA', 'MRPC', 'QQP', 'STS-B', 'MNLI', 'SNLI', 'QNLI', 'RTE', "CTA"],
         help="Task names")
     parser.add_argument("--seed", type=int, nargs="+", 
         default=[100, 13, 21, 42, 87],
@@ -104,7 +106,7 @@ def main():
 
             # Shuffle the training set
             print("| Task = %s" % (task))
-            if task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI", "CoLA"]:
+            if task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI", "CoLA", "CTA"]:
                 # GLUE style 
                 train_header, train_lines = split_header(task, dataset["train"])
                 np.random.shuffle(train_lines)
@@ -119,7 +121,7 @@ def main():
             os.makedirs(setting_dir, exist_ok=True)
 
             # Write test splits
-            if task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI", "CoLA"]:
+            if task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI", "CoLA", "CTA"]:
                 # GLUE style
                 # Use the original development set as the test set (the original test sets are not publicly available)
                 for split, lines in dataset.items():
@@ -143,7 +145,7 @@ def main():
                 else:
                     label_list[label].append(line)
             
-            if task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI", "CoLA"]:
+            if task in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI", "CoLA", "CTA"]:
                 with open(os.path.join(setting_dir, "train.tsv"), "w") as f:
                     for line in train_header:
                         f.write(line)
