@@ -74,11 +74,13 @@ def main():
             args.key = 'cta_dev_eval_acc'
             args.test_key = 'cta_test_eval_acc'
             args.test_key2 = 'cta_test_eval_f1'
+            condition['task_name'] = 'cta'
             print_name = 'CTA'
         elif condition['task_name'] == 'cta/f1':
             args.key = 'cta_dev_eval_f1'
             args.test_key2 = 'cta_test_eval_acc'
             args.test_key = 'cta_test_eval_f1'
+            condition['task_name'] = 'cta'
             print_name = 'CTA'
         elif condition['task_name'] == 'snli':
             args.key = 'snli_dev_eval_acc'
