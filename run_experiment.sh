@@ -95,7 +95,7 @@ case $TASK in
         ;;
     CTA)
         TEMPLATE=*cls**sent_0*_This_is_a*mask*.*sep+*
-        MAPPING="{0:'fact',1:'command'}"
+        MAPPING="{'0':'fact','1':'command'}"
         ;;
 
 esac
