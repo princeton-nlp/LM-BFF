@@ -50,7 +50,7 @@ from transformers.integrations import (
     run_hp_search_optuna,
     run_hp_search_ray,
 )
-from transformers.modeling_auto import MODEL_FOR_QUESTION_ANSWERING_MAPPING
+from transformers.models.auto.modeling_auto import MODEL_FOR_QUESTION_ANSWERING_MAPPING
 from transformers.modeling_utils import PreTrainedModel
 from transformers.optimization import AdamW, get_linear_schedule_with_warmup
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
@@ -175,6 +175,11 @@ class Trainer(transformers.Trainer):
     """
     Adding some functions based on Transformers' Trainer class.
     """
+    def is_local_master(self) -> bool:
+        if is_torch_tpu_available():
+            return xm.is_master_ordinal(local=True)
+        else:
+            return self.args.local_rank in [-1, 0]
 
     def create_optimizer_and_scheduler(self, num_training_steps: int):
         """
@@ -404,7 +409,8 @@ class Trainer(transformers.Trainer):
                     # ----------------------------------------------------------------------
 
                     metrics = None
-                    if self.args.evaluate_during_training and self.global_step % self.args.eval_steps == 0:
+                    #if self.args.evaluate_during_training and self.global_step % self.args.eval_steps == 0:
+                    if self.global_step % self.args.eval_steps == 0:
                         output = self.evaluate()
                         metrics = output.metrics
                         objective = self.dev_objective(metrics)
@@ -433,7 +439,7 @@ class Trainer(transformers.Trainer):
             delattr(self, "_past")
 
         logger.info("\n\nTraining completed. Do not forget to share your model on huggingface.co/models =)\n\n")
-        return TrainOutput(self.global_step, tr_loss / self.global_step), self.objective
+        return TrainOutput(self.global_step, tr_loss / self.global_step, metrics), self.objective
 
 
     """
