@@ -582,6 +582,7 @@ class FewShotDataset(torch.utils.data.Dataset):
                 label_word_list=label_word_list,
                 first_sent_limit=self.args.first_sent_limit,
                 other_sent_limit=self.args.other_sent_limit,
+                truncate_head=self.args.truncate_head,
             )
             features = OurInputFeatures(**inputs, label=example_label)
 
