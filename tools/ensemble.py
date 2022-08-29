@@ -41,9 +41,9 @@ def get_glue_label(task, line):
 def get_labels(data_dir, k, seed, task, print_name):
     if print_name in ['sst-5', 'mr', 'cr', 'mpqa', 'subj', 'trec']:
         data = pd.read_csv(os.path.join(data_dir, print_name, '{}-{}'.format(k, seed), 'test.csv'), header=None).values.tolist()
-        labels = np.zeros((len(data)), dtype=np.uint8)
+        label_ids = np.zeros((len(data)), dtype=np.uint8)
         for i, example in enumerate(data):
-            labels[i] = example[0]
+            label_ids[i] = example[0]
     elif print_name in ["MNLI", "MRPC", "QNLI", "QQP", "RTE", "SNLI", "SST-2", "STS-B", "WNLI", "CoLA"]:
         lines = []
         file_name = os.path.join(data_dir, print_name, '{}-{}'.format(k, seed), 'test.tsv')
