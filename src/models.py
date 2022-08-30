@@ -3,8 +3,9 @@
 import torch
 import torch.nn as nn
 import transformers
-from transformers.modeling_bert import BertPreTrainedModel, BertForSequenceClassification, BertModel, BertOnlyMLMHead
-from transformers.modeling_roberta import RobertaForSequenceClassification, RobertaModel, RobertaLMHead, RobertaClassificationHead
+#from transformers.models.bert.modeling_bert import BertModel,BertForMaskedLM
+from transformers.models.bert.modeling_bert import BertPreTrainedModel, BertForSequenceClassification, BertModel, BertOnlyMLMHead
+from transformers.models.roberta.modeling_roberta import RobertaForSequenceClassification, RobertaModel, RobertaLMHead, RobertaClassificationHead
 from transformers.modeling_outputs import SequenceClassifierOutput
 
 import logging

@@ -78,7 +78,6 @@ python run.py \
     --do_train \
     --do_eval \
     --do_predict \
-    --evaluate_during_training \
     --model_name_or_path roberta-large \
     --few_shot_type prompt-demo \
     --num_k 16 \

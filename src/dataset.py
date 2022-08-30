@@ -174,7 +174,7 @@ def tokenize_multipart_input(
                 part = part.replace('_', ' ') 
                 # handle special case when T5 tokenizer might add an extra space
                 if len(part) == 1:
-                    new_tokens.append(tokenizer._convert_token_to_id(part))
+                    new_tokens.append(tokenizer.convert_tokens_to_ids(part))
                 else:
                     new_tokens += enc(part)
 
@@ -284,9 +284,10 @@ class FewShotDataset(torch.utils.data.Dataset):
                 if self.label_to_word[key][0] not in ['<', '[', '.', ',']:
                     # Make sure space+word is in the vocabulary
                     assert len(tokenizer.tokenize(' ' + self.label_to_word[key])) == 1
-                    self.label_to_word[key] = tokenizer._convert_token_to_id(tokenizer.tokenize(' ' + self.label_to_word[key])[0])
+                    #self.label_to_word[key] = tokenizer._convert_token_to_id(tokenizer.tokenize(' ' + self.label_to_word[key])[0])
+                    self.label_to_word[key] = tokenizer.convert_tokens_to_ids(tokenizer.tokenize(' ' + self.label_to_word[key])[0])
                 else:
-                    self.label_to_word[key] = tokenizer._convert_token_to_id(self.label_to_word[key])
+                    self.label_to_word[key] = tokenizer.convert_tokens_to_ids(self.label_to_word[key])
                 logger.info("Label {} to word {} ({})".format(key, tokenizer._convert_id_to_token(self.label_to_word[key]), self.label_to_word[key]))
             
             if len(self.label_list) > 1:
